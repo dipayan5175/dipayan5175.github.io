@@ -1,54 +1,92 @@
-# [Start Bootstrap - Grayscale](https://startbootstrap.com/template-overviews/grayscale/)
+# hugo Resume
 
-[Grayscale](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+Created from [Start Bootstrap - Resume](https://startbootstrap.com/template-overviews/resume/).
+This is basically a single-page website with auto-scrolling based on left-hand nav.  Dedicated project/publications pages allow more detail.  Includes a client-side search powered by fuse.js at '/search' but currently theme does not link to that anywhere.  Includes an `/admin` endpoint that can allow authorized users to use a WYSIWYG editor and commit files back to markdown, but with a Wordpress/CMS like experience.
 
-## Preview
+<!-- MarkdownTOC autolink="true" -->
 
-[![Grayscale Preview](https://startbootstrap.com/assets/img/screenshots/themes/grayscale.png)](https://blackrockdigital.github.io/startbootstrap-grayscale/)
+- [Examples](#examples)]
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-grayscale/)**
+- [Setup & Use](#setup--use)
+    - [Summary](#summary)
+    - [Data files](#data-files)
+    - [Projects](#projects)
+    - [Publications](#publications)
+    - [Blog / Posts](#blog--posts)
+    - [Template params](#template-params)tgggtgc
+- [CMS Editor with Netlify CMS](#cms-editor-with-netlify-cms)
+- [Credits](#credits)
+    - [Contributions](#contributions)
+    - [Start Bootstrap Resume](#start-bootstrap-resume)
 
-## Status
+<!-- /MarkdownTOC -->
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-grayscale/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-grayscale.svg)](https://www.npmjs.com/package/startbootstrap-grayscale)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-grayscale.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-grayscale)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-grayscale/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-grayscale)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-grayscale/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-grayscale?type=dev)
+## Examples
 
-## Download and Installation
+![About You](https://raw.githubusercontent.com/eddiewebb/hugo-resume/master/images/about.png)
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/grayscale/)
-* Install via npm: `npm i startbootstrap-grayscale`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-grayscale.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-grayscale)
+![With optional Contact QR Code](https://raw.githubusercontent.com/eddiewebb/hugo-resume/master/images/qrcode.png)
 
-## Usage
+![Highlight skills with dev icons](https://raw.githubusercontent.com/eddiewebb/hugo-resume/master/images/skills.png)
 
-### Basic Usage
+![List featured projects](https://raw.githubusercontent.com/eddiewebb/hugo-resume/master/images/projects.png)
 
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+![Searchable content](https://raw.githubusercontent.com/eddiewebb/hugo-resume/master/images/search.png)
 
-### Advanced Usage
+See [Eddie's site](https://edwardawebb.com) for a live example.
 
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+## Setup & Use
 
-#### Gulp Tasks
+This theme uses a combination of a custom archetype `projects` and some data files to drive content.
 
-- `gulp` the default task that builds everything
-- `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
+You can test the provided [exampleSite](exampleSite) after cloning with the command:
+`cd exampleSite;hugo -t hugo-resume --themesDir ../.. server`
 
-You must have npm and Gulp installed globally on your machine in order to use these features.
+### Summary
+Edit the main `contents/_index.md with a brief bio/summary`
 
-## Bugs and Issues
+### Data files
+Data files are used for simple content presented on the homepage.
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-grayscale/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/grayscale/).
+- [data/skills.json](https://github.com/eddiewebb/hugo-resume/blob/master/exampleSite/data/skills.json)
+- [data/experience.json](https://github.com/eddiewebb/hugo-resume/blob/master/exampleSite/data/experience.json)
+- [data/education.json](https://github.com/eddiewebb/hugo-resume/blob/master/exampleSite/data/education.json)
 
-## About
+
+### Projects
+Initially projects were in their own JSON file too, but I decided I wanted to allow more detail and custom formatting.
+Projects are added to one of 2 subfolders of `creations` or `contributions`. The difference indicates your role as originator or colaborator.   Use `hugo add projects/TYPE/name-of-project.md` to leverage the proper archetype.
+
+### Publications
+Similar to projects, create them under `publications`. Include any papers, speaking engagements, articles, etc.
+
+### Blog / Posts
+Similar to posts, create them under `blog`. Include any thoughts, musiings, etc.
+**This template does not support a `posts` folder**
+
+### Template params
+
+All personal information outside the above details is captured by params in [`config.toml`](https://github.com/eddiewebb/hugo-resume/blob/master/exampleSite/config.toml), or can be edited in the "Settings" collection if using CMS.
+
+## CMS Editor with Netlify CMS
+**Does not require deployment to Netlify!**
+
+[Netlify CMS](https://www.netlifycms.org/) is an open source project that enables CMS like experience for static site generation tools like Hugo. This theme includes a fully working integration and guide in [exampleSite/static/admin](https://github.com/eddiewebb/hugo-resume/blob/master/exampleSite/static/admin)
+
+![CMS integration](/images/cms.png)
+
+
+## Credits
+
+This project ports the Start Bootstrap Resume theme by David Miller to support hugo.
+
+### Contributions
+The following users have made notable contributions:
+- [Anthony Whitford](https://github.com/awhitford)
+- [Kaushal Modi](https://github.com/kaushalmodi)
+- [Julien Rouse](https://github.com/JulienRouse)
+
+### Start Bootstrap Resume
 
 Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
 
@@ -63,6 +101,3 @@ Start Bootstrap was created by and is maintained by **[David Miller](http://davi
 
 Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-## Copyright and License
-
-Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/gh-pages/LICENSE) license.
