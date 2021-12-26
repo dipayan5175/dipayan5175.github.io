@@ -1,1 +1,1 @@
-# dipayan5175.github.io
+# This is my personal website where I have all my information regarding school, experience and other activities
